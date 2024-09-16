@@ -25,66 +25,47 @@ Java와 Spring Boot를 사용하여 도서 관리 시스템 개발. SQL, Java, S
 - **8. 카테고리 추가**
 - **9. 회원가입/로그인**
 
-### 3. 추가 기능 및 학습 목표
+### 3. DB
+USERS 테이블
 
-- **테스트 추가**
-    - JUnit을 사용해 단위 테스트와 통합 테스트 작성
-    - Mockito 활용 Mocking 연습
-- **API 설계**
-    - RESTful API 설계로 페이징, 정렬, 필터링 기능 추가
-- **고급 검색**
-    - 제목 외에도 작성자, 카테고리, 출판 연도 등 다양한 조건으로 검색 기능 확장
+|Column|Type|Constraints|
+|---|---|---|
+|id|BIGINT|AUTO_INCREMENT, PRIMARY KEY|
+|username|VARCHAR(255)|NOT NULL|
+|password|VARCHAR(255)|NOT NULL|
+|nickname|VARCHAR(255)||
+|profile_img|VARCHAR(255)||
 
-### 4. 기간
+#### CATEGORY 테이블
 
-2024.08.19 ~ 2024.08.26
+|Column|Type|Constraints|
+|---|---|---|
+|id|BIGINT|AUTO_INCREMENT, PRIMARY KEY|
+|name|VARCHAR(255)|NOT NULL|
 
-### 5. 기술 스택
+#### BOOK 테이블
 
-- **Backend**: Java, SpringBoot, MyBatis
-- **Database**: MariaDB
-- **Testing**: JUnit
-- **API 연동**: 네이버 책 API
-- **기타**: Maven/Gradle, Git
+|Column|Type|Constraints|
+|---|---|---|
+|id|BIGINT|AUTO_INCREMENT, PRIMARY KEY|
+|title|VARCHAR(255)|NOT NULL|
+|image|VARCHAR(255)||
+|author|VARCHAR(255)|NOT NULL|
+|description|TEXT||
+|created_at|DATE|NOT NULL|
+|updated_at|DATE||
+|is_read|BOOLEAN|DEFAULT FALSE|
+|user_id|BIGINT|FOREIGN KEY, REFERENCES USERS(id)|
+|category_id|BIGINT|NOT NULL, FOREIGN KEY, REFERENCES CATEGORY(id)|
 
-### 6. 목적
+#### REVIEW 테이블
 
-- SQL, Java, Spring 프레임워크 학습
-- TDD(Test-Driven Development) 습관 형성
-- RESTful API 설계 및 구현 경험
-- MyBatis와 MariaDB를 활용한 데이터베이스 연동
-
-### 7. 규칙
-
-1. **간단한 기능이라도 TDD**
-
-    - 모든 기능 구현 전에 테스트 코드 작성. 테스트 주도 개발 습관화.
-2. **함수형 프로그래밍**
-
-    - 순수 함수(pure function) 작성, 불변성(immutability) 유지, 함수형 프로그래밍 적용.
-3. **작고 빈번한 커밋**
-
-    - 자주 커밋. 의미 있는 단위로 작업 분리, 코드 변경 내역 쉽게 추적.
-4. **코드 리뷰**
-
-    - 코드 주기적으로 검토. 가상으로 다른 사람 검토를 생각하며 리뷰.
-5. **리팩토링**
-
-    - 중복 코드, 복잡한 로직 줄이고 가독성 높이기. "코드가 동작할 때 리팩토링".
-6. **객체지향 원칙 준수**
-
-    - SOLID 원칙 따르며 객체지향 설계 실습. 코드 유연성, 재사용성 강화.
-7. **주석 최소화**
-
-    - 코드 자체가 읽기 쉽도록 작성. 불가피할 경우에만 주석 작성.
-8. **정기적인 학습 회고**
-
-    - 프로젝트 진행 중 주기적으로 학습 과정 되돌아보기. 배운 점, 개선할 점 기록.
-9. **간단한 문서화**
-
-    - 주요 기능, 설정 방법 등 간단히 문서화해 프로젝트 이해 돕기.
-10. **정리된 코드 스타일**
-
-    - 코드 스타일 일관성 유지. 포매팅, 네이밍 컨벤션 준수해 깔끔한 코드베이스 유지.
-
-### 8. 참고
+| Column     | Type         | Constraints                       |
+| ---------- | ------------ | --------------------------------- |
+| id         | BIGINT       | AUTO_INCREMENT, PRIMARY KEY       |
+| title      | VARCHAR(255) | NOT NULL                          |
+| comment    | TEXT         |                                   |
+| created_at | DATE         | NOT NULL                          |
+| updated_at | DATE         |                                   |
+| user_id    | BIGINT       | FOREIGN KEY, REFERENCES USERS(id) |
+| book_id    | BIGINT       | FOREIGN KEY, REFERENCES BOOK(id)  |
