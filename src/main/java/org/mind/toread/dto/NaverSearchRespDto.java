@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class NaverSearchRespDto {
     private int total;
-    private List<NaverSearchDto> items;
+    private List<BookDto> items;
 }

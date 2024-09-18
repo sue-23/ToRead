@@ -1,7 +1,10 @@
 package org.mind.toread.service;
 
 import lombok.RequiredArgsConstructor;
+import org.mind.toread.dto.BookDto;
 import org.mind.toread.dto.NaverSearchRespDto;
+import org.mind.toread.mapper.BookMapper;
+import org.mind.toread.model.Book;
 import org.springframework.stereotype.Service;
 
 
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class BookService {
 
     private final NaverBookSearchService naverBookSearchService;
+    private final BookMapper bookMapper;
 
     //책 검색
     public NaverSearchRespDto searchBook(String title) {
@@ -17,4 +21,9 @@ public class BookService {
         return serchResult;
     }
 
+    public void saveBook(BookDto saveReqBook) {
+        Book saveBook = BookDto.toEntity(saveReqBook);
+        bookMapper.saveBook(saveBook);
+
+    }
 }
