@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 @Log4j2
@@ -25,8 +28,9 @@ public class BookController {
     @PostMapping("/bookshelf/add")
     public ResponseEntity<?> saveBook(@RequestBody BookDto saveBookDto) {
         bookService.saveBook(saveBookDto);
-        log.info("컨트롤러에서 책 타이틀 가져오니?"+saveBookDto.getTitle());
-        return new ResponseEntity<>("책장에 책 추가 완료", HttpStatus.CREATED);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Book saved successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 

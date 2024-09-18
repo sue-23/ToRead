@@ -1,12 +1,16 @@
 package org.mind.toread.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.mind.toread.model.Book;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookDto {
     private String title;
     private String image;
