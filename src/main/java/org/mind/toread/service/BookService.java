@@ -21,9 +21,15 @@ public class BookService {
         return serchResult;
     }
 
+    //책 추가
     public void saveBook(BookDto saveReqBook) {
         Book saveBook = BookDto.toEntity(saveReqBook);
         bookMapper.saveBook(saveBook);
 
+    }
+
+    //책 전체 조회
+    public void getBooks() {
+        bookMapper.getBooks();
     }
 }

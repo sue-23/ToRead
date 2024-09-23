@@ -28,11 +28,17 @@ public class BookController {
     @PostMapping("/bookshelf/add")
     public ResponseEntity<?> saveBook(@RequestBody BookDto saveBookDto) {
         bookService.saveBook(saveBookDto);
+
         Map<String, String> response = new HashMap<>();
         response.put("message", "Book saved successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-
-
+//    @GetMapping("bookshelf/list")
+//    public ResponseEntity<?> getBooks() {
+//
+//        bookService.getBooks();
+//
+//        return ResponseEntity.status(HttpStatus.OK).body();
+//    }
 }

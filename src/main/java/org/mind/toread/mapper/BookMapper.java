@@ -12,4 +12,7 @@ public interface BookMapper {
 
     //ToRead 에 Book 추가
     void saveBook(Book saveReqBook);
+
+    // 전체 BookList 불러오기
+    Book getBooks();
 }

@@ -7,4 +7,12 @@
         INSERT INTO BOOK (title, image, author, description)
         VALUES (#{title}, #{image}, #{author}, #{description});
     </insert>
+
+    <select id="getBooks">
+        SELECT title, image, author, description
+        FROM BOOK
+        WHERE user_id = USER.id
+    </select>
+
+
 </mapper>

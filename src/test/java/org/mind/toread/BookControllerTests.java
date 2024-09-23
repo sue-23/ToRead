@@ -28,20 +28,21 @@ public class BookControllerTests {
 
     @Test
     void insertBookTest() throws Exception {
-        BookDto bookDto = new BookDto();
-        bookDto.setTitle("개발자의 꿈");
-        bookDto.setImage("test-image-url");
-        bookDto.setAuthor("테스트 작가");
-        bookDto.setDescription("테스트 설명");
 
-        doNothing().when(bookService).saveBook(bookDto);
-
+        BookDto saveBook = new BookDto().builder()
+                .title("개발자의 꿈")
+                .image("test-image-url")
+                .author("test-author")
+                .description("test-description")
+                .build();
+        doNothing().when(bookService).saveBook(saveBook);
         mockMvc.perform(post("/bookshelf/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"title\":\"개발자의 꿈\", \"image\":\"test-image-url\", \"author\":\"테스트 작가\", \"description\":\"테스트 설명\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$." +
                         "message").value("Book saved successfully"));
+
     }
 
 

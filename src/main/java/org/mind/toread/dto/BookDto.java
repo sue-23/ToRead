@@ -26,5 +26,16 @@ public class BookDto {
                 .build();
     }
 
+    public static void toDto(Book book) {
+
+        BookDto toDto = BookDto.builder()
+                .title(book.getTitle())
+                .image(book.getImage())
+                .author(book.getAuthor())
+                .description(book.getDescription())
+                .build();
+    }
+
+
 
 }
