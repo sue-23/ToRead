@@ -1,4 +1,4 @@
-package org.mind.toread.model;
+package org.mind.toread.book;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,10 +1,10 @@
 package org.mind.toread;
-import org.mind.toread.dto.BookDto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mind.toread.controller.BookController;
-import org.mind.toread.dto.BookDto;
-import org.mind.toread.service.BookService;
+import org.mind.toread.book.BookController;
+import org.mind.toread.book.BookReqeust;
+import org.mind.toread.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,9 +27,10 @@ public class BookControllerTests {
 
 
     @Test
+    @DisplayName("책장에 책 저장")
     void insertBookTest() throws Exception {
 
-        BookDto saveBook = new BookDto().builder()
+        BookReqeust.SaveDto saveBook = new BookReqeust.SaveDto().builder()
                 .title("개발자의 꿈")
                 .image("test-image-url")
                 .author("test-author")

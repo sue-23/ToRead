@@ -1,8 +1,7 @@
-package org.mind.toread.service;
+package org.mind.toread.book;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.mind.toread.dto.NaverSearchRespDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +25,7 @@ public class NaverBookSearchService {
     private String apiUrl;
 
 
-    public NaverSearchRespDto searchBook(String title) {
+    public BookResponse.NaverSearchDto searchBook(String title) {
 
         String searchUrl = apiUrl + title;
 
@@ -36,7 +35,7 @@ public class NaverBookSearchService {
         headers.set("X-Naver-Client-Secret", secretKey);
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        ResponseEntity<NaverSearchRespDto> response  = restTemplate.exchange(searchUrl, HttpMethod.GET, entity, NaverSearchRespDto.class);
+        ResponseEntity<BookResponse.NaverSearchDto> response  = restTemplate.exchange(searchUrl, HttpMethod.GET, entity, BookResponse.NaverSearchDto.class);
 
         return response.getBody();
 

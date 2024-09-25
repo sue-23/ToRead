@@ -1,10 +1,6 @@
-package org.mind.toread.service;
+package org.mind.toread.book;
 
 import lombok.RequiredArgsConstructor;
-import org.mind.toread.dto.BookDto;
-import org.mind.toread.dto.NaverSearchRespDto;
-import org.mind.toread.mapper.BookMapper;
-import org.mind.toread.model.Book;
 import org.springframework.stereotype.Service;
 
 
@@ -16,14 +12,14 @@ public class BookService {
     private final BookMapper bookMapper;
 
     //책 검색
-    public NaverSearchRespDto searchBook(String title) {
-        NaverSearchRespDto serchResult = naverBookSearchService.searchBook(title);
+    public BookResponse.NaverSearchDto searchBook(String title) {
+        BookResponse.NaverSearchDto serchResult = naverBookSearchService.searchBook(title);
         return serchResult;
     }
 
     //책 추가
-    public void saveBook(BookDto saveReqBook) {
-        Book saveBook = BookDto.toEntity(saveReqBook);
+    public void saveBook(BookReqeust.SaveDto saveReqBook) {
+        Book saveBook = BookReqeust.SaveDto.toEntity(saveReqBook);
         bookMapper.saveBook(saveBook);
 
     }

@@ -1,9 +1,7 @@
-package org.mind.toread.mapper;
+package org.mind.toread.book;
 
 
 import org.apache.ibatis.annotations.Mapper;
-import org.mind.toread.dto.BookDto;
-import org.mind.toread.model.Book;
 import org.springframework.stereotype.Repository;
 
 @Repository
